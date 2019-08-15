@@ -7,7 +7,7 @@ module.exports = [
         mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
         target: 'web',
         entry: {
-            'scratch': path.resolve(__dirname, 'src/scratch.js')
+            'scratch': path.resolve(__dirname, 'src/renderer/scratch.js')
         },
         output: {
             path: path.resolve(__dirname, 'dist'),
@@ -21,7 +21,7 @@ module.exports = [
                     include: path.resolve(__dirname, 'src')
                 },
                 {
-                    test: path.resolve('src', 'scratch.js'),
+                    test: path.resolve('src', 'renderer', 'scratch.js'),
                     loader: 'expose-loader?Scratch'
                 }
             ]

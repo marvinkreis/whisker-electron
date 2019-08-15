@@ -1,11 +1,12 @@
 const EventEmitter = require('events');
-const fs = require('fs');
 
-const ScratchStorage = window.Scratch.ScratchStorage;
-const ScratchRender = window.Scratch.ScratchRender;
-const ScratchSVGRenderer = window.Scratch.ScratchSVGRenderer;
-const ScratchAudio = window.Scratch.ScratchAudio;
-const ScratchVM = window.Scratch.ScratchVM;
+const {
+    ScratchStorage,
+    ScratchRender,
+    ScratchSVGRenderer,
+    ScratchAudio,
+    ScratchVM
+} = window.Scratch;
 
 const ASSET_SERVER = 'https://cdn.assets.scratch.mit.edu';
 const PROJECT_SERVER = 'https://cdn.projects.scratch.mit.edu';
@@ -80,13 +81,13 @@ class Scratch extends EventEmitter {
             Scratch.getAssetUrl, Scratch.getAssetUrl);
 
         const renderer = new ScratchRender(canvas);
-        const audioEngine = new ScratchAudio();
+        const scratchAudio = new ScratchAudio();
         const SVGAdapter = new ScratchSVGRenderer.SVGRenderer();
         const bitmapAdapter = new ScratchSVGRenderer.BitmapAdapter();
 
         const vm = new ScratchVM();
         vm.attachRenderer(renderer);
-        vm.attachAudioEngine(audioEngine);
+        vm.attachAudioEngine(scratchAudio);
         vm.attachStorage(storage);
         vm.attachV2SVGAdapter(SVGAdapter);
         vm.attachV2BitmapAdapter(bitmapAdapter);
@@ -175,9 +176,4 @@ class Scratch extends EventEmitter {
     }
 }
 
-const canvas = document.getElementById('scratch-stage');
-const stage = new Scratch(canvas);
-
-const project = fs.readFileSync('/home/marvin/temp/test.sb3');
-stage.loadProject(project);
-stage.enableInput();
+module.exports = Scratch;

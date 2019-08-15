@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "electron": "^5.0.2",
+        "minimist": "^1.2.0",
         "scratch-audio": "^0.1.0-prerelease.20181023202904",
         "scratch-blocks": "^0.1.0-prerelease.1541795263",
         "scratch-render": "^0.1.0-prerelease.20181102130522",
