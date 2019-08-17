@@ -59,7 +59,7 @@ const setAndValidateOptions = function () {
 };
 
 const runTestsOnProject = async function (projectPath) {
-    console.log(`Running tests on ${projectPath} ...`);
+    console.log(`Running tests on "${projectPath}" ...`);
 
     let resolve;
     const promise = new Promise((rs, _) => {
@@ -98,8 +98,8 @@ const runTestsOnProject = async function (projectPath) {
 const onTestsDone = function (event, message) {
     const {id, tap13Report, summary, coverage} = message;
     console.log(`Finished running tests on "${id}"`);
-    console.log(summary);
-    console.log(coverage);
+    // console.log(summary);
+    // console.log(coverage);
 
     const pathInfo = path.parse(id);
     const outString = `# project: ${pathInfo.base}\n${tap13Report}}`;
