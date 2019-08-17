@@ -77,7 +77,7 @@ const runTestsOnProject = async function (projectPath) {
         autoHideMenuBar: true
     });
 
-    window.loadURL(`file://${__dirname}/../../static/index.html`);
+    window.loadURL(`file://${__dirname}/../renderer/index.html`);
 
     window.webContents.on('did-finish-load', () => {
         window.webContents.send('runTests', {

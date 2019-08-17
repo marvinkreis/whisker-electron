@@ -1,7 +1,7 @@
 const {ipcRenderer} = require('electron');
 
-const {CoverageGenerator, TestRunner, TAP13Listener} = require('../../whisker-main');
-const ScratchStage = require('../src/renderer/scratch-stage');
+const {CoverageGenerator, TestRunner, TAP13Listener} = require('../../../whisker-main');
+const ScratchStage = require('./scratch-stage');
 const {Thread} = window.Scratch;
 
 let scratch;
