@@ -12,8 +12,7 @@
     "main": "./src/main/index.js",
     "scripts": {
         "build": "webpack --progress --colors --bail",
-        "build:prod": "NODE_ENV=production webpack --progress --colors --bail",
-        "package": "pkg --target node10-win-x64,node10-linux-x64,node10-macos-x64 ."
+        "build:prod": "NODE_ENV=production webpack --progress --colors --bail"
     },
     "dependencies": {
         "electron": "^5.0.2",
@@ -35,7 +34,7 @@
         "eslint": "^5.6.0",
         "eslint-config-scratch": "^5.0.0",
         "expose-loader": "^0.7.5",
-        "webpack": "^4.19.1",
+        "webpack": "^4.35.0",
         "webpack-cli": "^3.1.1"
     }
 }
