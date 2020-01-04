@@ -43,10 +43,10 @@ const runTestsWithCoverage = async function (project, tests) {
 };
 
 const main = function () {
-  scratch = new ScratchStage(document.getElementById('scratch-stage'));
+    scratch = new ScratchStage(document.getElementById('scratch-stage'));
 };
 
-document.addEventListener("DOMContentLoaded", main);
+document.addEventListener('DOMContentLoaded', main);
 
 ipcRenderer.on('runTests', async (event, message) => {
     const {testsCode, project, id} = message;

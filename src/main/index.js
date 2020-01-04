@@ -27,7 +27,7 @@ const setAndValidateOptions = function () {
     try {
         const stat = fs.statSync(testsPath);
         if (!stat.isFile()) {
-            error(`Tests file "${testsPath}" is not a directory.`);
+            error(`Tests file "${testsPath}" is not a regular file.`);
         }
         testsCode = fs.readFileSync(testsPath, 'utf8');
     } catch (err) {
@@ -49,7 +49,7 @@ const setAndValidateOptions = function () {
         try {
             const stat = fs.statSync(projectPath);
             if (!stat.isFile()) {
-                error(`Project directory "${projectPath}" is not a directory.`);
+                error(`Project file "${projectPath}" is not a regular file.`);
             }
         } catch (err) {
             if (err.code !== 'ENOENT') throw err;
@@ -68,7 +68,7 @@ const runTestsOnProject = async function (projectPath) {
 
     const project = fs.readFileSync(projectPath);
 
-    const window = new BrowserWindow({
+    const win = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
@@ -77,17 +77,17 @@ const runTestsOnProject = async function (projectPath) {
         autoHideMenuBar: true
     });
 
-    window.loadURL(`file://${__dirname}/../renderer/index.html`);
+    win.loadURL(`file://${__dirname}/../renderer/index.html`);
 
-    window.webContents.on('did-finish-load', () => {
-        window.webContents.send('runTests', {
+    win.webContents.on('did-finish-load', () => {
+        win.webContents.send('runTests', {
             testsCode: testsCode,
             project: project,
             id: projectPath
         });
     });
 
-    window.on('closed', () => {
+    win.on('closed', () => {
         console.log();
         resolve();
     });

@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = [
 
-    /* JS */
+    /* Web-compatible Scratch JS */
     {
         mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
         target: 'web',
