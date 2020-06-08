@@ -15,8 +15,9 @@ const loadTestsFromString = function (string) {
 
 const runTestsWithCoverage = async function (project, tests) {
     await scratch.vm.loadProject(project);
-    CoverageGenerator.prepareThread(Thread);
-    CoverageGenerator.prepare(scratch.vm);
+
+    CoverageGenerator.prepareClasses({Thread});
+    CoverageGenerator.prepareVM(scratch.vm);
     const testRunner = new TestRunner();
 
     const tap13Report = [];
@@ -26,7 +27,7 @@ const runTestsWithCoverage = async function (project, tests) {
     const coverage = CoverageGenerator.getCoverage();
     const coveragePerSprite = coverage.getCoveragePerSprite();
 
-    CoverageGenerator.restoreThread(Thread);
+    CoverageGenerator.restoreClasses({Thread});
 
     const formattedSummary = TAP13Listener.formatSummary(summary);
     const formattedCoverage = TAP13Listener.formatCoverage(coveragePerSprite);
